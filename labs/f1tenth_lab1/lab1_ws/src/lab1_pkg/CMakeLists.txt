@@ -23,13 +23,19 @@ find_package(rclpy REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(ackermann_msgs REQUIRED)
 add_executable(talker src/talker.cpp)
+add_executable(relay src/relay.cpp)
 ament_target_dependencies(talker rclcpp ackermann_msgs)
-
+ament_target_dependencies(relay rclcpp ackermann_msgs)
 
 install(TARGETS
   talker
+  relay
   DESTINATION lib/${PROJECT_NAME})
 
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

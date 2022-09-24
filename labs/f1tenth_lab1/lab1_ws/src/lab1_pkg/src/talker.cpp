@@ -16,7 +16,6 @@
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
 #include "ackermann_msgs/msg/ackermann_drive_stamped.hpp"
 
 using namespace std::chrono_literals;
@@ -51,7 +50,7 @@ private:
     auto message = ackermann_msgs::msg::AckermannDriveStamped();
     message.drive.speed = v_;
     message.drive.steering_angle = d_;
-    RCLCPP_INFO(
+    RCLCPP_DEBUG(
       this->get_logger(), 
       "Publishing: speed: %f steering_angle: %f", 
       message.drive.speed,
